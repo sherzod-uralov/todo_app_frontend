@@ -37,6 +37,7 @@ const Register = () => {
       minWidth: 200.0,
       scale: 2.0,
       scaleMobile: 1.0,
+      size: 1.6,
       THREE: THREE,
       backgroundColor: "#243392",
     });
@@ -53,16 +54,14 @@ const Register = () => {
       "
       >
         <div>
-          <a href="/">
-            <h3 className="text-4xl font-bold text-[#F71735]">Registers</h3>
-          </a>
+          <a href="/"></a>
         </div>
-        <div className="w-full px-6 py-4 mt-6 overflow-hidden h-full bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-2xl bg-opacity-30  shadow-md sm:max-w-lg sm:rounded-2xl">
+        <div className="w-full px-6 py-4 mt-6 overflow-hidden h-full bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-2xl bg-opacity-30  shadow-md sm:max-w-lg sm:rounded-3xl">
           <form onSubmit={onSubmit}>
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-black"
+                className="block text-sm font-medium text-white"
               >
                 Username
               </label>
@@ -73,14 +72,14 @@ const Register = () => {
                   onChange={(e) => setUsername(e.target.value)}
                   type="text"
                   name="username"
-                  className="block w-full mt-1  pl-2 h-12 rounded-xl shadow-sm bg-transparent border border-white outline-none "
+                  className="block w-full mt-1  pl-2 h-12 rounded-xl opacity-[0.5] shadow-sm bg-transparent border-[3px] border-white outline-none "
                 />
               </div>
             </div>
             <div className="mt-4">
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-black undefined"
+                className="block text-sm font-medium text-white undefined"
               >
                 Email
               </label>
@@ -91,14 +90,14 @@ const Register = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   name="email"
-                  className="block  w-full h-12 pl-2 outline-none mt-1 border border-white bg-transparent rounded-xl shadow-sm"
+                  className="block  w-full h-12 pl-2 outline-none mt-1 border-[3px] opacity-[0.5] border-white bg-transparent rounded-xl shadow-sm"
                 />
               </div>
             </div>
             <div className="mt-4">
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-black undefined"
+                className="block text-sm font-medium text-white undefined"
               >
                 Password
               </label>
@@ -109,22 +108,18 @@ const Register = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   type="password"
                   name="password"
-                  className="block outline-none pl-2 w-full h-12 mt-1 border-white bg-transparent border rounded-xl shadow-sm"
+                  className="block outline-none pl-2 w-full h-12 mt-1 border-white bg-transparent opacity-[0.5] border-[3px] rounded-xl shadow-sm"
                 />
               </div>
             </div>
-
-            <a href="#" className="text-xs text-[#F71735] hover:underline">
-              Forget Password?
-            </a>
-            <div className="flex items-center mt-4">
-              <button className="w-full px-4 py-2 tracking-wide text-white border border-white transition-colors duration-200 transform bg-[#white] rounded-md hover:bg-[#pink] focus:outline-none focus:bg-[#F71735]">
+            <div className="flex items-center mt-8">
+              <button className="w-full px-4 py-2 tracking-wide text-white border-[3px] border-white transition-colors duration-200 transform bg-[#white] rounded-tl-3xl rounded-br-3xl hover:bg-[#pink] focus:outline-none focus:bg-[#F71735]">
                 Register
               </button>
             </div>
           </form>
-          <div className="mt-4 text-grey-600">
-            Already have an account?{" "}
+          <div className="mt-4 text-white">
+            Already have an account:{" "}
             <span>
               <Link className="text-[#F71735] hover:underline" to="/login">
                 Log in
@@ -133,14 +128,14 @@ const Register = () => {
           </div>
           <div className="flex items-center w-full my-4">
             <hr className="w-full" />
-            <p className="px-3 ">OR</p>
+            <p className="px-3 text-white">OR</p>
             <hr className="w-full" />
           </div>
           <div className="my-6 space-y-2">
             <button
               aria-label="Login with Google"
               type="button"
-              className="flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
+              className="flex items-center justify-center w-full p-2 space-x-4 border-[3px] rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
