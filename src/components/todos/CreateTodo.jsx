@@ -136,7 +136,7 @@ const CreateTodo = () => {
         <div className="flex items-center gap-2">
           <h2 className="text-[#4EA8DE]">Tasks</h2>
           <span className="bg-[#333] text-white flex items-center gap-1 rounded-xl px-[8px]">
-            <span>{completedLength.length}</span>
+            <span>{completedLength?.length}</span>
             <span>to</span>
             <span>{data?.Todos?.length}</span>
           </span>
