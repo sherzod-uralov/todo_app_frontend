@@ -54,7 +54,7 @@ const Register = () => {
       >
         <div>
           <a href="/">
-            <h3 className="text-4xl font-bold text-[#F71735]">Register</h3>
+            <h3 className="text-4xl font-bold text-[#F71735]">Registers</h3>
           </a>
         </div>
         <div className="w-full px-6 py-4 mt-6 overflow-hidden h-full bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-2xl bg-opacity-30  shadow-md sm:max-w-lg sm:rounded-2xl">
