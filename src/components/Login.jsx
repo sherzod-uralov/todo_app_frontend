@@ -3,6 +3,7 @@ import { useNavigate} from "react-router-dom";
 import Topology from "vanta/src/vanta.halo.js";
 import * as THREE from "three";
 import axios from "axios";
+import api_url from "../api/api_url.js";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -11,13 +12,12 @@ const Login = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${URL}/login`, {
+            const response = await axios.post(`${api_url}/login`, {
                 email,
                 password,
             });
             if (response.status === 200) {
-                navigate("/");
-            }
+                navigate("/");            }
             console.log(response);
             localStorage.setItem("authToken", response.data.token);
         } catch (error) {
@@ -52,9 +52,9 @@ const Login = () => {
         <div >
             <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0   " ref={vantaRef}>
                 <div>
-                    <a href="/">
+
                         <h3 className="text-4xl font-bold text-white">Login</h3>
-                    </a>
+
                 </div>
                 <div
                     className="w-full px-6 py-4 mt-6 x  shadow-md sm:max-w-lg sm:rounded-3xl h-full rounded-md bg-clip-padding backdrop-filter backdrop-blur-2xl  bg-opacity-30" >
@@ -72,7 +72,7 @@ const Login = () => {
                                     onChange={(e) => setEmail(e.target.value)}
                                     type="email"
                                     name="email"
-                                    className="block w-full outline-none mt-1  border-[3px]  h-10 rounded-md shadow-sm bg-transparent"
+                                    className="block w-full outline-none mt-1  border-[3px]  h-10 rounded-md shadow-sm bg-transparent pl-3"
                                 />
                             </div>
                         </div>
@@ -89,7 +89,7 @@ const Login = () => {
                                     onChange={(e) => setPassword(e.target.value)}
                                     type="password"
                                     name="password"
-                                    className="block w-full outline-none mt-1 border-white border-[3px]  h-10 rounded-md shadow-sm bg-transparent"
+                                    className="block w-full outline-none mt-1 border-white border-[3px]  h-10 rounded-md shadow-sm bg-transparent pl-3"
                                 />
                             </div>
                         </div>
