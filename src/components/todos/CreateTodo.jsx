@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import api_url from "../../api/api_url.js";
+import { IoAddCircleOutline } from "react-icons/io5";
+import { log } from "three/nodes";
 
 const CreateTodo = () => {
   const [todo, setTodo] = useState("");
@@ -26,7 +28,6 @@ const CreateTodo = () => {
       );
       getData();
       setTodo("");
-      console.log(response);
     } catch (e) {
       console.log(e);
     }
@@ -71,7 +72,7 @@ const CreateTodo = () => {
         },
       );
       getData();
-      setEditableItemId(null); // Reset editable item after updating
+      setEditableItemId(null);
     } catch (e) {
       console.log(e);
     }
@@ -95,24 +96,53 @@ const CreateTodo = () => {
     }
   };
 
+  const completedLength = data?.Todos?.filter((i) => i.completed);
+
   useEffect(() => {
     getData();
   }, []);
 
   return (
-    <div>
-      <form action="" onSubmit={handleSubmit}>
-        <div className="flex gap-4">
+    <div className="container">
+      <form
+        action=""
+        onSubmit={handleSubmit}
+        className="flex -translate-y-7 justify-between"
+      >
+        <div className="flex w-full gap-2">
           <input
-            className="border border-green-600"
+            className="h-[48px] pl-[16px] rounded-[8px] bg-[#262626] w-full"
             type="text"
+            required={true}
+            placeholder="Add a new task"
             value={todo}
             onChange={(e) => setTodo(e.target.value)}
           />
-          <button type="submit">ADD</button>
+          <button
+            type="submit"
+            className="bg-[#1E6F9F] text-white flex gap-[8px] p-[12px] rounded-[8px] items-center"
+          >
+            ADD <IoAddCircleOutline className="text-xl text-white" />
+          </button>
         </div>
       </form>
-      <div className="flex flex-col gap-2">
+      <div className="container flex items-center justify-between">
+        <div className="flex items-center gap-1">
+          <h2 className="text-[#4EA8DE]">Tasks</h2>
+          <span className="bg-[#333] text-white block rounded-xl px-[8px]">
+            {data?.Todos?.length}
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <h2 className="text-[#4EA8DE]">Tasks</h2>
+          <span className="bg-[#333] text-white flex items-center gap-1 rounded-xl px-[8px]">
+            <span>{completedLength.length}</span>
+            <span>to</span>
+            <span>{data?.Todos?.length}</span>
+          </span>
+        </div>
+      </div>
+      <div className="flex flex-col gap-2 mt-10">
         {data?.Todos?.sort((a, b) => a.todo_id - b.todo_id)
           .map((item, index) => (
             <div key={index} className="flex gap-2 border border-red-400">

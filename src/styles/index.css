@@ -2,3 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+    background: #1A1A1A;
+}
+
+.container{
+    width: 1000px;
+    max-width: 100%;
+    margin: 0 auto;
+
+}

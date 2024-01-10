@@ -14,6 +14,7 @@
     "is-there": "^4.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.0.0",
     "react-router-dom": "^6.21.1",
     "three": "^0.160.0",
     "vanta": "^0.5.24"
