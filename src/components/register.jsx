@@ -12,14 +12,15 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`http://localhost:5600/api/register`, {
+      const response = await axios.post(`${Api_url}/register`, {
         username,
         email,
         password,
       });
-      console.log(response);
+
+      localStorage.setItem("authToken", response?.data?.token);
       if (response.status === 201) {
-        navigate("/login");
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
@@ -54,7 +55,7 @@ const Register = () => {
       "
       >
         <div>
-          <a href="/"></a>
+          <h3 className="text-4xl font-bold text-white">Register</h3>
         </div>
         <div className="w-full px-6 py-4 mt-6 overflow-hidden h-full bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-2xl bg-opacity-30  shadow-md sm:max-w-lg sm:rounded-3xl">
           <form onSubmit={onSubmit}>
