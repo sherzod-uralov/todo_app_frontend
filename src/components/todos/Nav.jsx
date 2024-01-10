@@ -1,7 +1,43 @@
-import React from "react";
-import rocket from '../../assets/rocket.svg'
+import React, {useEffect, useRef} from "react";
+import Topology from "vanta/src/vanta.cells.js";
+import * as THREE from "three";
+
 const Nav = () => {
-  return <div className="w-[1440] h-[200px] bg-[#0D0D0D] flex justify-center items-center ">
+
+
+
+
+  // const vantaRef = useRef(null);
+
+  // useEffect(() => {
+  //   const vantaEffect = Topology({
+  //     el: vantaRef.current,
+  //     mouseControls: true,
+  //     backgroundColor: "#243392",
+  //     touchControls: true,
+  //     gyroControls: false,
+  //     minHeight: 200.00,
+  //     minWidth: 200.00,
+  //     scale: 2.00,
+  //     size: 0.60,
+  //     THREE: THREE,
+  //     speed: 1.00,
+  //     color1: 0xb3395,
+  //     color2: 0x125693
+  //   });
+  //
+  //   // return () => {
+  //   //   if (vantaEffect) vantaEffect.destroy();
+  //   // };
+  // }, []);
+
+
+
+
+  return <div className="w-full h-[200px]  flex justify-center items-center "
+
+
+  >
     <div>
       <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 22 28" fill="none">
         <path
