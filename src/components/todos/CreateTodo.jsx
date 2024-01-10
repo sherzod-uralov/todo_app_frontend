@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import api_url from "../../api/api_url.js";
 import { IoAddCircleOutline } from "react-icons/io5";
-import { log } from "three/nodes";
-
+import { MdDelete } from "react-icons/md";
+import { RiEdit2Line } from "react-icons/ri";
 const CreateTodo = () => {
   const [todo, setTodo] = useState("");
   const [completedStatus, setCompletedStatus] = useState({});
@@ -111,7 +111,7 @@ const CreateTodo = () => {
       >
         <div className="flex w-full gap-2">
           <input
-            className="h-[48px] pl-[16px] rounded-[8px] bg-[#262626] w-full"
+            className="h-[48px] outline-none text-white pl-[16px] rounded-[8px] bg-[#262626] w-full"
             type="text"
             required={true}
             placeholder="Add a new task"
@@ -142,51 +142,65 @@ const CreateTodo = () => {
           </span>
         </div>
       </div>
-      <div className="flex flex-col gap-2 mt-10">
+      <div className="flex flex-col gap-[12px] mt-10">
         {data?.Todos?.sort((a, b) => a.todo_id - b.todo_id)
           .map((item, index) => (
-            <div key={index} className="flex gap-2 border border-red-400">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                checked={item.completed}
-                onChange={() => {
-                  completedFunc(item.todo_id, item.completed);
-                }}
-              />
-              {editableItemId === item.todo_id ? (
-                <>
+            <div
+              key={index}
+              className="flex justify-between py-4 rounded-[8px] px-[16px] bg-[#333] gap-2 "
+            >
+              <div className="flex items-center gap-[12px]">
+                <label className="flex relative items-center space-x-2 cursor-pointer">
                   <input
-                    className="border border-blue-500"
-                    type="text"
-                    value={updateTodo}
-                    onChange={(e) => setUpdateTodo(e.target.value)}
+                    type="checkbox"
+                    checked={item.completed}
+                    onChange={() => {
+                      completedFunc(item.todo_id, item.completed);
+                    }}
+                    className="appearance-none w-5 h-5 rounded-full border border-gray-300 checked:bg-[#5E60CE] checked:border-transparent focus:outline-none"
                   />
-                  <button
-                    className="border border-black"
-                    onClick={() => updateItem(item.todo_id)}
-                  >
-                    save
-                  </button>
-                </>
-              ) : (
-                <>
-                  <h2>{item.todo}</h2>
-                  <button
-                    className="border border-black"
-                    onClick={() => setEditableItemId(item.todo_id)}
-                  >
-                    update
-                  </button>
-                </>
-              )}
-              <button
-                className="border border-black"
-                onClick={() => deleteItem(item.todo_id)}
-              >
-                delete
-              </button>
+                  {item.completed ? (
+                    <svg
+                      className="w-4 h-4 -left-[6px] z-50 absolute fill-current"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
+                    </svg>
+                  ) : null}
+                </label>
+                <div className="flex">
+                  {editableItemId === item.todo_id ? (
+                    <>
+                      <input
+                        className="border absolute border-blue-500"
+                        type="text"
+                        value={updateTodo}
+                        onChange={(e) => setUpdateTodo(e.target.value)}
+                      />
+                      <button
+                        className="border border-black"
+                        onClick={() => updateItem(item.todo_id)}
+                      >
+                        save
+                      </button>
+                    </>
+                  ) : (
+                    <h2 className="text-white text-[14px]">{item.todo}</h2>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <RiEdit2Line
+                  className="text-[#808080] text-2xl hover:text-white transition-all"
+                  onClick={() => setEditableItemId(item.todo_id)}
+                />
+                <MdDelete
+                  className="text-[#808080] text-2xl hover:text-white transition-all"
+                  onClick={() => deleteItem(item.todo_id)}
+                />
+              </div>
             </div>
           ))
           .reverse()}
