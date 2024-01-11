@@ -4,6 +4,8 @@ import api_url from "../../api/api_url.js";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import { RiEdit2Line } from "react-icons/ri";
+import { FaRegSave } from "react-icons/fa";
+
 const CreateTodo = () => {
   const [todo, setTodo] = useState("");
   const [completedStatus, setCompletedStatus] = useState({});
@@ -60,11 +62,11 @@ const CreateTodo = () => {
     }
   };
 
-  const updateItem = async (id) => {
+  const updateItem = async (id, item) => {
     try {
       const getResponse = await axios.put(
         `${api_url}/todo/${id}`,
-        { todo: updateTodo },
+        { todo: updateTodo.length ? updateTodo : item },
         {
           headers: {
             Authorization: localStorage.getItem("authToken"),
@@ -89,7 +91,7 @@ const CreateTodo = () => {
           },
         },
       );
-      console.log(getResponse);
+
       getData();
     } catch (e) {
       console.log(e);
@@ -103,7 +105,7 @@ const CreateTodo = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container xl:px-0 px-5">
       <form
         action=""
         onSubmit={handleSubmit}
@@ -111,7 +113,7 @@ const CreateTodo = () => {
       >
         <div className="flex w-full gap-2">
           <input
-            className="h-[48px] outline-none text-white pl-[16px] rounded-[8px] bg-[#262626] w-full"
+            className="h-[48px] outline-none text-white bg-transparent border pl-[16px] rounded-[8px] bg-[#262626] w-full"
             type="text"
             required={true}
             placeholder="Add a new task"
@@ -142,12 +144,12 @@ const CreateTodo = () => {
           </span>
         </div>
       </div>
-      <div className="flex flex-col gap-[12px] mt-10">
+      <div className="flex flex-col gap-[12px] mt-10 h-[500px] overflow-auto">
         {data?.Todos?.sort((a, b) => a.todo_id - b.todo_id)
           .map((item, index) => (
             <div
               key={index}
-              className="flex justify-between py-4 rounded-[8px] px-[16px] bg-[#333] gap-2 "
+              className="flex justify-between  relative py-4 rounded-[8px] px-[16px] gap-2 bg-clip-padding backdrop-filter backdrop-blur-md border shadow-2xl bg-opacity-20"
             >
               <div className="flex items-center gap-[12px]">
                 <label className="flex relative items-center space-x-2 cursor-pointer">
@@ -161,7 +163,7 @@ const CreateTodo = () => {
                   />
                   {item.completed ? (
                     <svg
-                      className="w-4 h-4 -left-[6px] z-50 absolute fill-current"
+                      className="w-3 h-3 -left-[4px] z-50 absolute fill-white"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                     >
@@ -174,20 +176,26 @@ const CreateTodo = () => {
                   {editableItemId === item.todo_id ? (
                     <>
                       <input
-                        className="border absolute border-blue-500"
+                        className="outline-none text-white bg-transparent"
+                        required={true}
                         type="text"
+                        placeholder="updated text"
                         value={updateTodo}
                         onChange={(e) => setUpdateTodo(e.target.value)}
                       />
-                      <button
-                        className="border border-black"
-                        onClick={() => updateItem(item.todo_id)}
-                      >
-                        save
-                      </button>
+                      <FaRegSave
+                        className="text-[#808080] text-2xl absolute right-20"
+                        onClick={() => updateItem(item.todo_id, item.todo)}
+                      />
                     </>
                   ) : (
-                    <h2 className="text-white text-[14px]">{item.todo}</h2>
+                    <h2
+                      className={`text-white text-[14px] ${
+                        item.completed ? "text-[#808080] line-through" : ""
+                      }`}
+                    >
+                      {item.todo}
+                    </h2>
                   )}
                 </div>
               </div>
