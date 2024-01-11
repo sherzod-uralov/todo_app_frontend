@@ -55,7 +55,7 @@ const CreateTodo = () => {
           Authorization: localStorage.getItem("authToken"),
         },
       });
-      console.log(getResponse);
+
       getData();
     } catch (e) {
       console.log(e);

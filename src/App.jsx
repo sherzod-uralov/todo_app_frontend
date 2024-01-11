@@ -19,9 +19,9 @@ function App() {
       midtoneColor: 0x0922ffe,
       lowlightColor: 0x55ffffe,
       baseColor: 0x243392,
-      blurFactor: 0.8,
+      blurFactor: 0.25,
       THREE,
-      speed: 2,
+      speed: 1,
     });
 
     return () => {
