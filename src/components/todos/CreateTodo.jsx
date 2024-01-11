@@ -144,7 +144,7 @@ const CreateTodo = () => {
           </span>
         </div>
       </div>
-      <div className="flex flex-col gap-[12px] mt-10 h-[500px] overflow-auto">
+      <div className="flex flex-col gap-[12px] mt-10 h-[430px] overflow-auto">
         {data?.Todos?.sort((a, b) => a.todo_id - b.todo_id)
           .map((item, index) => (
             <div
