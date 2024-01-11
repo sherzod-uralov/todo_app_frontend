@@ -17,13 +17,12 @@ function App() {
             backgroundColor: "#243392",
             touchControls: true,
             gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 2.00,
-            size: 0.60,
-            THREE: THREE,
+            highlightColor: 0xff00a5,
+            midtoneColor: 0x50088e,
+            lowlightColor: 0x3918c5,
+            baseColor: 0xc06f6f,
+            blurFactor: 0.25,
             speed: 1.90,
-            highlightColor: 0xff00a5
         });
 
 
