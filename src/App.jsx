@@ -20,7 +20,7 @@ function App() {
             highlightColor: 0x5BC0BE,
             midtoneColor: 0x1C2541,
             lowlightColor: 0x3A506B,
-            baseColor: 0xc06f6f,
+            baseColor: 0x54C6EB,
             blurFactor: 0.25,
             speed: 1.90,
         });
